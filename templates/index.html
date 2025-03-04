@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Word Meaning App</title>
+</head>
+<body>
+    <h1>Word Meaning App</h1>
+    <form action="/" method="POST">
+        <label for="word">Enter a word:</label>
+        <input type="text" id="word" name="word" required>
+        <button type="submit">Get Meaning</button>
+    </form>
+    {% if error_message %}
+    <div class="error">
+        <p>Error: {{ error_message }}</p>
+    </div>
+    {% endif %}
+    {% if meaning %}
+    <div class="result">
+        <h2>Meaning of "{{ word }}":</h2>
+        <p>{{ meaning }}</p>
+        <h3>Phonetics:</h3>
+        <p>{{ phonetics }}</p>
+        <h3>Part of Speech:</h3>
+        <p>{{ part_of_speech }}</p>
+        <h3>Synonyms:</h3>
+        <p>{{ synonyms }}</p>
+        <h3>Antonyms:</h3>
+        <p>{{ antonyms }}</p>
+        <h3>Example:</h3>
+        <p>{{ example }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>
